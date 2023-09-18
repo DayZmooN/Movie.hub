@@ -1,0 +1,425 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  font-family: segoe-ui_normal, Segoe UI, Segoe, Segoe WP, Helvetica Neue, Helvetica, sans-serif;
+  background-color: #18181B;
+  display: content;
+  height: 100vh;
+}
+@media screen and (min-width: 780px) {
+  body {
+    display: grid;
+    grid-template-areas: "nav header header" "nav section aside" "nav footer footer";
+    grid-template-rows: 80px 1fr 50px;
+    grid-template-columns: 25% 1fr 0%;
+  }
+}
+body header {
+  grid-area: header;
+}
+body header .logo-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body header .logo-menu .logo-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+body header .logo-menu .logo-name .picture-profil {
+  width: 70px;
+  height: 70px;
+  border-radius: 99px;
+}
+body header .logo-menu .logo-name .span-name {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-weight: 500;
+  gap: 3px;
+}
+body header .logo-menu .logo-name .span-name .name {
+  font-weight: 700;
+}
+body header .logo-menu .burger #checkbox {
+  display: none;
+}
+body header .logo-menu .burger .toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  transform: rotate(180deg);
+  gap: 10px;
+  transition-duration: 0.5s;
+}
+body header .logo-menu .burger .bars {
+  width: 100%;
+  height: 4px;
+  background-color: #D41F1F;
+  border-radius: 4px;
+}
+body header .logo-menu .burger #bar1 {
+  width: 100%;
+}
+body header .logo-menu .burger #bar2 {
+  width: 75%;
+}
+body header .logo-menu .burger #checkbox:checked + .toggle .bars {
+  position: absolute;
+  transition-duration: 0.5s;
+}
+body header .logo-menu .burger #checkbox:checked + .toggle #bar2 {
+  transform: scaleX(0);
+  transition-duration: 0.1s;
+}
+body header .logo-menu .burger #checkbox:checked + .toggle #bar1,
+body header .logo-menu .burger #checkbox:checked + .toggle #bar3 {
+  width: 100%;
+  transition-duration: 0.5s;
+}
+body header .logo-menu .burger #checkbox:checked + .toggle #bar1 {
+  transform: rotate(45deg);
+}
+body header .logo-menu .burger #checkbox:checked + .toggle #bar3 {
+  transform: rotate(-45deg);
+}
+body header .logo-menu .burger #checkbox:checked + .toggle {
+  transition-duration: 0.5s;
+  transform: rotate(180deg);
+}
+body header .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  margin: 80px auto;
+  opacity: 0;
+  transition: opacity 0.85s ease;
+}
+body header .modal h5 {
+  font-size: 3rem;
+  color: red;
+}
+body nav {
+  grid-area: nav;
+  display: none;
+}
+@media screen and (min-width: 780px) {
+  body nav {
+    display: block;
+    background: #151515;
+  }
+  body nav h1 {
+    color: #FF0000;
+  }
+  body nav h1 span {
+    color: #fff;
+  }
+}
+body #content {
+  width: 100%;
+  height: 100%;
+  grid-area: section;
+  overflow: scroll;
+}
+body #content::-webkit-scrollbar {
+  display: none;
+}
+body #content h2,
+body #content .text_maj {
+  color: #fff;
+  font-size: 1rem;
+  font: 400;
+  margin: 10px 10px;
+}
+body #content .container_cards {
+  margin: 20px 15px;
+  display: flex;
+  overflow: scroll;
+  gap: 30px;
+}
+body #content .container_cards::-webkit-scrollbar {
+  display: none;
+}
+body #content .container_cards .card {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+body #content .container_cards .card .img_card {
+  position: relative;
+  background-image: url(/asset/picture/morbius.svg);
+  width: 90%;
+  min-width: 280px;
+  background-size: cover;
+  height: 197px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 24px;
+}
+@media screen and (min-width: 780px) {
+  body #content .container_cards .card .img_card {
+    width: 650px;
+    height: 321px;
+  }
+}
+body #content .container_cards .card .img_card .title-rating {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  bottom: 10px;
+  width: 100%;
+}
+body #content .container_cards .card .img_card .title-rating .title {
+  width: auto;
+  margin: 0px 10px;
+}
+body #content .container_cards .card .img_card .title-rating .title .text_maj {
+  color: #fff;
+  font-size: 1.2rem;
+  bottom: 25px;
+  margin: 0px 10px;
+}
+body #content .container_cards .card .img_card .title-rating .title .studio {
+  color: rgba(255, 255, 255, 0.5019607843);
+  font-size: 0.7rem;
+  bottom: 10px;
+  margin: 0px 10px;
+}
+body #content .container_cards .card .img_card .title-rating .rating {
+  margin: auto 10px;
+}
+body #content .container_cards .card .img_card .title-rating .rating:not(:checked) > input {
+  position: absolute;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+body #content .container_cards .card .img_card .title-rating .rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 1.4em;
+  color: #666;
+}
+body #content .container_cards .card .img_card .title-rating .rating:not(:checked) > label:before {
+  content: "★";
+}
+body #content .container_cards .card .img_card .title-rating .rating > input:checked + label:hover,
+body #content .container_cards .card .img_card .title-rating .rating > input:checked + label:hover ~ label,
+body #content .container_cards .card .img_card .title-rating .rating > input:checked ~ label:hover,
+body #content .container_cards .card .img_card .title-rating .rating > input:checked ~ label:hover ~ label,
+body #content .container_cards .card .img_card .title-rating .rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+body #content .container_cards .card .img_card .title-rating .rating:not(:checked) > label:hover,
+body #content .container_cards .card .img_card .title-rating .rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+body #content .container_cards .card .img_card .title-rating .rating > input:checked ~ label {
+  color: #ffa723;
+}
+body #content .filter {
+  width: 100%;
+  height: auto;
+  overflow: scroll;
+}
+body #content .filter::-webkit-scrollbar {
+  display: none;
+}
+body #content .filter .filter {
+  margin: 12px 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+body #content .filter .filter span {
+  color: rgba(255, 255, 255, 0.7176470588);
+  font: 1.1rem;
+  cursor: pointer;
+}
+body #content .container_filter_cards {
+  display: flex;
+  overflow: scroll;
+}
+@media screen and (min-width: 780px) {
+  body #content .container_filter_cards {
+    overflow: auto;
+  }
+}
+body #content .container_filter_cards::-webkit-scrollbar {
+  display: none;
+}
+body #content .container_filter_cards .card-filter {
+  margin: 20px auto;
+  height: 100%;
+  padding: 10px;
+}
+body #content .container_filter_cards .card-filter .img_card {
+  position: relative;
+  background-image: url(/asset/picture/morbius.svg);
+  width: 124px;
+  background-size: cover;
+  height: 124px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 24px;
+}
+@media screen and (min-width: 780px) {
+  body #content .container_filter_cards .card-filter .img_card {
+    width: 205px;
+    height: 136px;
+  }
+}
+body #content .container_filter_cards .card-filter .img_card .title-rating {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  bottom: 10px;
+  width: 100%;
+}
+body #content .container_filter_cards .card-filter .img_card .title-rating .title {
+  width: auto;
+  margin: 0px 10px;
+}
+body #content .container_filter_cards .card-filter .img_card .title-rating .title .text_maj {
+  color: #fff;
+  font-size: 1.2rem;
+  bottom: 25px;
+  margin: 0px 10px;
+}
+body #content .container_filter_cards .card-filter .img_card .title-rating .title .year {
+  color: rgba(255, 255, 255, 0.5019607843);
+  font-size: 0.7rem;
+  bottom: 10px;
+  margin: 0px 10px;
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number {
+  display: none;
+}
+@media screen and (min-width: 780px) {
+  body #content .container_filter_cards .card-filter .img_card .rating-number {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    position: relative;
+  }
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating {
+  margin: auto 10px;
+  display: none;
+}
+@media screen and (min-width: 780px) {
+  body #content .container_filter_cards .card-filter .img_card .rating-number .rating {
+    display: block;
+  }
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .number_view {
+  width: 100%;
+  left: 10px;
+  text-align: right;
+  margin: auto -15px;
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .number_view span {
+  width: 100%;
+  color: #e58e09;
+  font: 600;
+  font-size: 0.97rem;
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating:not(:checked) > input {
+  position: absolute;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 1.4em;
+  color: #666;
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating:not(:checked) > label:before {
+  content: "★";
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating > input:checked + label:hover,
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating > input:checked + label:hover ~ label,
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating > input:checked ~ label:hover,
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating > input:checked ~ label:hover ~ label,
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating:not(:checked) > label:hover,
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+body #content .container_filter_cards .card-filter .img_card .rating-number .rating > input:checked ~ label {
+  color: #ffa723;
+}
+body footer {
+  width: 100%;
+  background: #242A32;
+  grid-area: footer;
+  position: sticky;
+  bottom: 0px;
+  background-color: #242A32;
+}
+@media screen and (min-width: 780px) {
+  body footer {
+    display: none;
+  }
+}
+body footer .menu_icon {
+  width: 100%;
+  height: 78px;
+  display: flex;
+  justify-content: center;
+}
+body footer .menu_icon button,
+body footer .menu_icon .icon {
+  width: 33%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+body footer .menu_icon button:active,
+body footer .menu_icon .icon:active {
+  color: #D41F1F;
+}
+body footer .menu_icon button img,
+body footer .menu_icon .icon img {
+  width: 21.74px;
+  height: 24px;
+  margin: auto;
+}
+body footer .menu_icon button span,
+body footer .menu_icon .icon span {
+  margin: 4px auto;
+  font-size: 0.9em;
+  white-space: nowrap;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font: 400;
+}/*# sourceMappingURL=style.css.map */
