@@ -11,13 +11,13 @@ const options = {
 };
 // fetch movie popular;
 
-fetch(
-  "https://api.themoviedb.org/3/account/null/rated/movies?language=en-US&page=1&sort_by=created_at.asc",
-  options
-)
-  .then((response) => response.json())
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err));
+// fetch(
+//   "https://api.themoviedb.org/3/account/null/rated/movies?language=en-US&page=1&sort_by=created_at.asc",
+//   options
+// )
+//   .then((response) => response.json())
+//   .then((response) => console.log(response))
+//   .catch((err) => console.error(err));
 
 async function fetchMovieNew() {
   try {
@@ -29,7 +29,7 @@ async function fetchMovieNew() {
     if (!response.ok)
       throw new Error("probleme avec la reponse  " + response.status);
 
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (error) {
     console.log(error);

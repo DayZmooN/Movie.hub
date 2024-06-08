@@ -7,7 +7,54 @@
     <link rel="stylesheet" href="./asset/css/style.css">
     <title>Document</title>
 
+    <style>
+        .card-loader {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            /*background-size: 200% 100%;*/
+            animation: loader-loading 1.5s infinite;
+            width: 100%;
+            height: 29.95rem;
+            margin-bottom: 20px;
+            border-radius: 24px;
+        }
 
+        .content-loader {
+            width: 300px;
+            height: 100%;
+        }
+
+        .img-loader,
+        .title-loader {
+            background: rgba(255, 255, 255, 0.19);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 24px 24px 0px 0px;
+
+        }
+
+        .img-loader {
+            width: 100%;
+            height: 70%;
+        }
+
+        .title-loader {
+            width: 60%;
+            height: 30px;
+            margin: 10px 0;
+        }
+
+        @keyframes loader-loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,7 +64,7 @@
                 <img class="picture-profil" src="./asset/picture/karim.jpg" alt="">
                 <div class="span-name">
                     <span>Welcome back</span>
-                    <span class="name">karim</span>
+                    <span class="name">DayZmooN</span>
                 </div>
             </div>
             <div class="burger">
@@ -32,6 +79,7 @@
         </div>
         <div id="modal" class="modal">
             <h5>contenue modal</h5>
+
         </div>
 
     </header>
@@ -39,27 +87,27 @@
         <h1 class=" ">MOVIES<Span>.hub</Span></h1>
     </nav>
     <section id="content">
-        <h2>New release</h2>
-        <div class="container">
-            <div class="slider-wrapper">
+        <div class="layout">
+
+
+            <h2>New release</h2>
+            <div class="container">
+                <div class="slider-wrapper">
+
+                </div>
+            </div>
+
+            <div class="filter">
+                <span onclick="displayMoviePopular()" class="active">popular</span>
+                <span onclick="displayMovieRate()" class="active">Rate</span>
+                <span onclick="displayMovieBest()" class="active">best seller</span>
+
+            </div>
+
+            <div class="container_filter_cards">
 
             </div>
         </div>
-        </div>
-
-        <div class="filter">
-            <span onclick="displayMoviePopular()" class="active">popular</span>
-            <span onclick="displayMovieRate()" class="active">Rate</span>
-            <span>popular</span>
-            <span>popular</span>
-            <span>popular</span>
-            <span>popular</span>
-            <span>popular</span>
-        </div>
-        <div class="container_filter_cards">
-
-        </div>
-
 
     </section>
     <footer>
@@ -86,6 +134,8 @@
             </div>
         </div>
     </footer>
+    <script src="./asset/js/main.js"></script>
+    <script src="./asset/js/loader.js"></script>
     <script src="./asset/js/index.js"></script>
     <script src="./asset/js/fetchPopular.js"></script>
     <script>

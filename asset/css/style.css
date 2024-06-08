@@ -26,6 +26,44 @@ body {
     height: 100vh;
   }
 }
+body .card-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  animation: loader-loading 1.5s infinite;
+  width: 30rem;
+  height: 29.95rem;
+  margin-bottom: 20px;
+  border-radius: 24px;
+}
+body .card-loader .content-loader {
+  width: 30rem;
+  height: 29.95rem;
+}
+body .card-loader .content-loader .img-loader,
+body .card-loader .content-loader .title-loader {
+  background: rgba(255, 255, 255, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 24px 24px 0px 0px;
+}
+body .card-loader .content-loader .img-loader {
+  width: 100%;
+  height: 70%;
+}
+body .card-loader .content-loader .title-loader {
+  width: 60%;
+  height: 30px;
+  margin: 10px 0;
+}
+@keyframes loader-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
 body header {
   background: #18181b;
   grid-area: header;
@@ -50,12 +88,14 @@ body header .logo-menu .logo-name {
   display: flex;
   align-items: center;
   gap: 10px;
+  gap: 10px;
 }
 body header .logo-menu .logo-name .picture-profil {
   width: 70px;
   height: 70px;
   border-radius: 99px;
   border: 2px solid #d41f1f;
+  filter: blur(4px) sepia(1) hue-rotate(180deg) brightness(1.5) contrast(1.2) invert(1) saturate(1.5) drop-shadow(0 0 0.5rem #d41f1f);
 }
 body header .logo-menu .logo-name .span-name {
   display: flex;
@@ -129,8 +169,8 @@ body header .modal {
   background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin: 80px auto;
-  opacity: 0;
   transition: opacity 0.85s ease;
 }
 body header .modal h5 {
@@ -163,6 +203,12 @@ body #content {
   grid-area: section;
   overflow: scroll;
 }
+body #content .layout {
+  width: 100%;
+  height: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+}
 body #content::-webkit-scrollbar {
   display: none;
   color: #d41f1f;
@@ -177,16 +223,21 @@ body #content h2 {
   font-size: 2rem;
   font: 400;
   margin-top: 20px;
-  margin-left: 40px;
 }
 body #content .slider-wrapper,
 body #content .container_filter_cards {
   width: auto;
-  margin: 20px 20px;
+  margin: 20px auto;
   display: flex;
   overflow: scroll;
+  align-items: center;
   gap: 30px;
-  padding: 2rem;
+}
+@media screen and (min-width: 780px) {
+  body #content .slider-wrapper,
+  body #content .container_filter_cards {
+    height: 400px;
+  }
 }
 body #content .slider-wrapper::-webkit-scrollbar,
 body #content .container_filter_cards::-webkit-scrollbar {

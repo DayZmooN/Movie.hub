@@ -18,41 +18,117 @@ async function fetchMoviePopular() {
 }
 
 async function displayMoviePopular() {
-  const cardPopular = document.querySelector(".container_filter_cards");
-  cardPopular.innerHTML = ""; // Vider le contenu existant
-
+  const container = document.querySelector(".container_filter_cards");
+  container.innerHTML = ""; // Vider le contenu existant
+  loaderLoader();
   const data = await fetchMoviePopular();
-  data.results.map((movie) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    console.log(movie);
 
-    card.innerHTML = `
+  setTimeout(() => {
+    container.innerHTML = ""; // clear for loader
+
+    data.results.map((movie) => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
               <div class="content_card">
-              
                 <img  class="img_card" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
                         <div class="title">
                             <h3 class="text_maj">${movie.title}</h3>
                             <span class="studio">Marvel Studios</span>
                         </div>
               </div>
-
   `;
-    cardPopular.appendChild(card);
-  });
-  card.innerHTML = ``;
+      container.appendChild(card);
+    });
+  }, 200);
 }
 displayMoviePopular();
-
+///////////////////////////////
+///fetch movie rate///
+////////////////////////////
 const fetchMovieRate = async () => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/account/null/rated/movies?language=en-US&page=1&sort_by=created_at.asc",
+    "https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=true&language=en-US&page=1&sort_by=vote_count.desc",
     options1
   );
   const result = await response.json();
-  console.log(result);
+  if (!response.ok)
+    throw new Error("probleme avec la reponse  " + response.status);
+  return result;
 };
-const displayMovieRate = () => {
-  const card = document.querySelector(".container_filter_cards");
-  card.innerHTML = "";
+
+const displayMovieRate = async () => {
+  const Container = document.querySelector(".container_filter_cards");
+  //clear container
+  Container.innerHTML = "";
+  //loader card
+  loaderLoader();
+  try {
+    const data = await fetchMovieRate();
+    setTimeout(() => {
+      Container.innerHTML = ""; // clear for loader
+
+      data.results.map((movie) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+    <div class="content_card">
+      <img  class="img_card" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+      <div class="title">
+        <h3 class="text_maj">${movie.title}</h3>
+        <span class="studio">Marvel Studios</span>
+      </div>
+    </div>
+    `;
+        Container.appendChild(card);
+      });
+    }, 200);
+  } catch (error) {
+    console.error("Error displaying best movies:", error);
+  }
+};
+
+/////
+///displayMovieBest///
+/////
+
+const fetchMovieBest = async () => {
+  const response = await fetch(
+    "https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=true&language=en-US&page=1&sort_by=primary_release_date.desc",
+    options1
+  );
+  const result = await response.json();
+  return result;
+};
+
+const displayMovieBest = async () => {
+  const Container = document.querySelector(".container_filter_cards");
+  //clear container
+  Container.innerHTML = "";
+  //loader card
+  loaderLoader();
+  try {
+    const data = await fetchMovieBest();
+    setTimeout(() => {
+      Container.innerHTML = ""; // clear for loader
+      console.log(data);
+      data.results.map((movie) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+        <div class="content_card">
+          <img class="img_card" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+          <div class="title">
+            <h3 class="text_maj">${movie.title}</h3>
+            <span class="studio">Marvel Studios</span>
+          </div>
+        </div>
+      `;
+        Container.appendChild(card);
+      });
+    }, 200);
+  } catch (error) {
+    console.error("Error displaying best movies:", error);
+  }
 };
