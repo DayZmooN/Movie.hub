@@ -84,7 +84,9 @@
 
     </header>
     <nav class="nav">
-        <h1 class=" ">MOVIES<Span>.hub</Span></h1>
+        <h1 class="logo">MOVIES<Span>.hub</Span></h1>
+
+        <img class="comming_soon" src="https://media.giphy.com/media/uE7kEF34HJG5q/source.gif" alt="comming_soon">
     </nav>
     <section id="content">
         <div class="layout">
@@ -98,15 +100,13 @@
             </div>
 
             <div class="filter">
-                <span onclick="displayMoviePopular()" class="active">popular</span>
-                <span onclick="displayMovieRate()" class="active">Rate</span>
-                <span onclick="displayMovieBest()" class="active">best seller</span>
-
+                <span data-filter="popular" class="active">popular</span>
+                <span data-filter="rate">Rate</span>
+                <span data-filter="best">best seller</span>
             </div>
 
-            <div class="container_filter_cards">
+            <div class="container_filter_cards"></div>
 
-            </div>
         </div>
 
     </section>
@@ -134,13 +134,12 @@
             </div>
         </div>
     </footer>
-    <script src="./asset/js/main.js"></script>
-    <script src="./asset/js/loader.js"></script>
-    <script src="./asset/js/index.js"></script>
-    <script src="./asset/js/fetchPopular.js"></script>
-    <script>
 
-    </script>
+    <script src="./asset/js/loader.js"></script>
+    <script src="./asset/js/main.js"></script>
+    <script src="./asset/js/fetch_home.js"></script>
+    <script src="./asset/js/fetchPopular.js"></script>
+    <script src="./asset/js/index.js"></script>
 </body>
 
 </html>

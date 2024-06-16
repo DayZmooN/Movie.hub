@@ -20,7 +20,7 @@ async function fetchMoviePopular() {
 async function displayMoviePopular() {
   const container = document.querySelector(".container_filter_cards");
   container.innerHTML = ""; // Vider le contenu existant
-  loaderLoader();
+  loader();
   const data = await fetchMoviePopular();
 
   setTimeout(() => {
@@ -63,7 +63,7 @@ const displayMovieRate = async () => {
   //clear container
   Container.innerHTML = "";
   //loader card
-  loaderLoader();
+  loader();
   try {
     const data = await fetchMovieRate();
     setTimeout(() => {
@@ -107,7 +107,7 @@ const displayMovieBest = async () => {
   //clear container
   Container.innerHTML = "";
   //loader card
-  loaderLoader();
+  loader();
   try {
     const data = await fetchMovieBest();
     setTimeout(() => {
