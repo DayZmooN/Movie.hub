@@ -127,7 +127,7 @@ const displayMovieBest = async () => {
       `;
         Container.appendChild(card);
       });
-    }, 200);
+    }, 1000);
   } catch (error) {
     console.error("Error displaying best movies:", error);
   }
